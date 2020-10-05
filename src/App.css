@@ -36,3 +36,11 @@ button{
 .profilePic{
     width: 5em;
 }
+
+.homeCard{
+    width: 100%;
+    margin-top: 3em !important;
+    margin: auto;
+    display: flex;
+    justify-content: center; 
+}

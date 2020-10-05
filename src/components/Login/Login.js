@@ -44,10 +44,15 @@ render(){
         <Todo firebaseAuth={firebase.auth()}/>
       </span>
       :
+      <>
+      <h1>To do's</h1>
+      <p>Sign up or Log in Below!</p>
       <StyledFirebaseAuth
         uiConfig={this.uiConfig}
         firebaseAuth={firebase.auth()}
+        className='homeCard'
         />
+        </>
    }
     </div>
 )
