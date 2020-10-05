@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
+    
     },
 }));
 
@@ -33,22 +34,24 @@ function Todo(props) {
 
     return (
         <>
-            <Modal open={open} onClose={e => setOpen(false)}>
+            <Modal open={open} onClose={e => setOpen(false)} >
+                <div className="editModal">
                 <div className={classes.paper}>
                     <h1>Edit this item</h1>
                     <Input placeholder={props.todo.todo}  type="text" value={input} onChange={event => setInput(event.target.value)}/>
                     <Button variant= "contained" color= "primary" onClick={updateTodo}> Update Todo</Button>
                 </div>
+                </div>
             </Modal>
 
-            <List className="todo__list">
+            <List className="list">
                 <ListItem>
                     <ListItemAvatar>
                     </ListItemAvatar>
                     <ListItemText primary={props.todo.todo} />
                 </ListItem>
-                <Button color="secondary" variant="outlined" onClick={e => setOpen(true)}>Edit</Button>
-                <Button color="secondary" variant="outlined" onClick={event => db.collection('todos').doc(props.todo.id).delete()}>Delete Todo</Button>
+                <Button variant="contained" className="editbtn" onClick={e => setOpen(true)}>Edit</Button>
+                <Button variant="contained" color="secondary" onClick={event => db.collection('todos').doc(props.todo.id).delete()}>Delete</Button>
             </List>
 
         </>

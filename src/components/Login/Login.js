@@ -3,6 +3,9 @@ import firebase from 'firebase';
 import db from '../../firebase/firebase'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
+import Todo from '../../page/Todos'
+import NavBar from '../NavBar';
+
 class Login extends React.Component {
 
  state = {isSignedIn:false};
@@ -31,13 +34,14 @@ render(){
     <div>
         {this.state.isSignedIn ?
       <span> 
-        <div>Signed In!</div>
-        <button onClick={()=> firebase.auth().signOut()}>Sign out</button>
+        <NavBar/>
+        
         <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
-        <img 
+        <img className="profilePic"
           alt='profile picture'
           src={firebase.auth().currentUser.photoURL}
         />
+        <Todo firebaseAuth={firebase.auth()}/>
       </span>
       :
       <StyledFirebaseAuth
